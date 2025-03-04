@@ -1,0 +1,16 @@
+{
+  "lastaccount": "",
+  "lastuuid": null,
+  "firsttime": 1,
+  "maximizedefault": "false",
+  "winwidth": "854",
+  "winheight": "480",
+  "demomode": "false",
+  "multiplayer": "false",
+  "gamechat": "false",
+  "minmem": "512",
+  "maxmem": "1024",
+  "javapath": "",
+  "jvmargs": "",
+  "customtheme": ""
+}

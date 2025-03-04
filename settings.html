@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>zdkrimson</title>
+	<link rel="stylesheet" href="settings.css">
+	<script src='settings.js'></script>
+</head>
+<body>
+<div id=dialogbg class=dialogbg>
+	<div id=addacc class=addaccount>
+		<p>Додати обліковий запис</p>
+		<button onclick='mslogin()' class=addaccbtn>Вхід через Microsoft</button>
+		<button onclick='offlinelogin()' class=addaccbtn>Офлайн вхід</button>
+		<button onclick='closeAddAccount()' class=addacccancel>Скасувати</button>
+	</div>
+	<div id=addoffline class=addoffline>
+		<p>Створити офлайн обліковий запис</p>
+		<input type='text' id='offlinename' placeholder='Ім`я користувача'>
+		<input type='text' id='offlineuuid' placeholder='UUID (необов`язково)'>
+		<div class=v-layout>
+			<button onclick="login('offline')" class=msbtn>Увійти</button>
+			<button onclick='closeOfflineAccount()' class=msbtn>Скасувати</button>
+		</div>
+	</div>
+	<div id=addmicrosoft class=addms>
+		<p>Вхід до Microsoft</p>
+		<input type='text' id='msemail' placeholder='Електронна пошта'>
+		<div class=v-layout>
+			<button onclick="login('microsoft')" class=msbtn>Увійти</button>
+			<button onclick='closeMSAccount()' class=msbtn>Скасувати</button>
+		</div>
+		<p class=msnotice><i>Вхід через Microsoft ще не реалізовано...</i></p>
+	</div>
+</div>
+<div class=titlebar>
+	<button onclick='closeSettings()' class=close>
+		<img width=30 src=assets/icons/arrowback.svg>
+	</button>
+	<p>Налаштування</p>
+</div>
+<div class=sidebar>
+	<button onclick='launcher()' class=sidebar-button>
+		<img width=25 src=assets/icons/playbox.svg>
+		<p class=sidebar-buttonText>Лаунчер</p>
+	</button>
+	<button onclick='minecraft()' class=sidebar-button>
+		<img width=25 src=assets/icons/cube.svg>
+		<p class=sidebar-buttonText>Minecraft</p>
+	</button>
+	<button onclick='java()' class=sidebar-button>
+		<img width=25 src=assets/icons/java.svg>
+		<p class=sidebar-buttonText>Java</p>
+	</button>
+	<hr class=sidehr>
+	<button onclick='accounts()' class=sidebar-button>
+		<img width=25 src=assets/icons/accounts.svg>
+		<p class=sidebar-buttonText>Облікові записи</p>
+	</button>
+	<button onclick='themes()' class=sidebar-button>
+		<img width=25 src=assets/icons/themes.svg>
+		<p class=sidebar-buttonText>Теми</p>
+	</button>
+	<hr>
+	<button onclick='about()' class=sidebar-button>
+		<img width=25 src=assets/icons/questionmark.svg>
+		<p class=sidebar-buttonText>Про нас</p>
+	</button>
+</div>
+<div class=v-line></div>
+<div class=settings>
+	<div id=launcher class=content>
+		<h1>Лаунчер</h1>
+		<div class=zdksection>
+			<img width=45 src="assets/logo/image/white.svg">
+			<div class=h-layout>
+				<div>Kxysl1k</div>
+				<div class=label><i>Бета 1</i></div>
+			</div>
+		</div>
+		<h2>Ваш пристрій</h2>
+		<div class=section>
+			<p id=syscpu>ЦП: Завантаження... </p>
+			<p id=sysgpu>ГП: Завантаження... </p>
+			<p id=sysmem>Пам'ять: Завантаження... </p>
+			<p id=syshost>Хост: Завантаження...</p>
+			<p id=sysplat>Платформа: Завантаження...</p>
+			<p id=sysres>Роздільна здатність: Завантаження...</p>
+		</div>
+		<h2>Інформація про Minecraft</h2>
+		<div class=section>
+			<p id=defaultjava>Java за замовчуванням: Завантаження...</p>
+			<p>Каталог екземплярів: Завантаження...</p>
+		</div>
+	</div>
+	<div id=minecraft class=content>
+		<h1>Minecraft</h1>
+		<h2>Розмір вікна</h2>
+		<div class=section>
+			<div class=rowlayout>
+				<input type="checkbox" id='mcmaximized' name='mcmax'>
+				<label for="mcmaximized"> Запускати Minecraft у максимізованому вікні?</label><br>
+			</div>
+			<div class=rowlayout>
+				<label for="windowwidth">Ширина вікна:</label>
+				<input class=windowtextbox type="number" id='windowwidth' name='winwidth' value='854' placeholder='854'>
+			</div>
+			<div class=rowlayout>
+				<label for="windowheight">Висота вікна:</label>
+				<input class=windowtextbox type="number" id='windowheight' name='winheight' value='480' placeholder='480'>
+			</div>
+		</div>
+		<h2>Різне</h2>
+		<div class=section>
+			<div class=rowlayout>
+				<input type="checkbox" id='mcdemomode' name='mcdemo'>
+				<label for="mcdemomode"> Демонстраційний режим</label><br>
+			</div>
+			<div class=rowlayout>
+				<input type="checkbox" id='mcmulti' name='mcmultiplayer'>
+				<label for="mcmulti"> Вимкнути мультиплеєр</label><br>
+			</div>
+			<div class=rowlayout>
+				<input type="checkbox" id='mcchat' name='mcgamechat'>
+				<label for="mcchat"> Вимкнути внутрішньоігровий чат</label><br>
+			</div>
+		</div>
+	</div>
+	<div id=java class=content>
+		<h1>Java</h1>
+		<h2>Пам'ять</h2>
+		<div class=section>
+			<div class=rowlayout>
+				<label>Мінімальна пам'ять:</label>
+				<input class=windowtextbox type="number" id='minram' value='512' placeholder='512 (МБ)'>
+				<label>МБ</label>
+			</div>
+			<div class=rowlayout>
+				<label>Максимальна пам'ять:</label>
+				<input class=windowtextbox type="number" id='maxram' value='1024' placeholder='1024 (МБ)'>
+				<label>МБ</label>
+			</div>
+		</div>
+		<h2>Java Runtime</h2>
+		<div class=section>
+			<div class=rowlayout>
+				<label>Шлях до Java:</label>
+				<input class=windowtextbox type="text" id='javapath' placeholder='javaw'>
+			</div>
+			<div class=rowlayout>
+				<label>Аргументи JVM:</label>
+				<input class=windowtextbox type="text" id='jvmargs'>
+			</div>
+		</div>
+	</div>
+	<div id=accounts class=content>
+		<h1>Облікові записи</h1>
+		<div class=rowlayout>
+			<button onclick='addaccount()'>Додати обліковий запис</button>
+			<button>Редагувати обліковий запис</button>
+			<button>Видалити обліковий запис</button>
+		</div>
+		<br>
+		<div id=account-section class='section big-gap'>
+			<p id=accountload>Завантаження....</p>
+		</div>
+	</div>
+	<div id=themes class=content>
+		<h1>Теми</h1>
+		<p>Незабаром... (Можливо)</p>
+	</div>
+	<div id=about class=content>
+		<h1>Про нас</h1>
+		<p>EpohaHub Launcher - це лаунчер, створений для приватного майнкрафт серверу.</p>
+		<p>Містить безліч функцій, що покращують якість життя, для покращення вашого досвіду гри.</p>
+		<br>
+		<h3>Розробники</h3>
+		<div class=section>
+			<p>Творець:
+				<a href="https://github.com/MTSyntho" target="_blank">MTSyntho</a>,
+				<a href="https://kxysl1k.netlify.app/" target="_blank">Kxysl1k</a>,
+				<a href="https://discord.com/users/837661039200960542" target="_blank">_VoTs_</a>
+			</p>
+		</div>
+		<br><br><br><br> <!-- мабуть не варто спамити тегами <br> :p -->
+	</div>
+</body>
+</html>
+
+<!-- я взяв усе це з програми налаштувань в AzuOS (https://github.com/AzuSystem/AzuOS) -->

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Launcher</title>
+		<link rel="stylesheet" href="instances.css">
+		<script src='instances.js'></script>
+	</head>
+	<body>
+		<div id=dialogbg class=dialogbg>
+			<div id=newinst class=new-inst>
+				<p>Створіть новий екземпляр</p>
+				<input type='text' id='offlinename' placeholder='Instance Name'>
+				<select id=mcversions>
+				  <!-- <option value="tf is wrong with you">Select a Minecraft Version</option> -->
+				  <option value="haha it broke">Select a Minecraft Version</option>
+
+				</select>
+				<div class=v-layout>
+					<button onclick='addInstance()'>Створити</button>
+					<button onclick='closeCreation()'>Скасувати</button>
+				</div>
+				<!-- 
+				<button onclick='mslogin()' class=addaccbtn>Microsoft Login</button>
+				<button onclick='offlinelogin()' class=addaccbtn>Offline Login</button>
+				<button onclick='closeAddAccount()' class=addacccancel>Cancel</button> -->
+			</div>
+		</div>
+		<div class=titlebar>
+			<button onclick='closeWindow()' class=close>
+				<img width=30 src=assets/icons/arrowback.svg>
+			</button>
+			<p>Примірники</p>
+		</div>
+		<!-- <p>Loading...</p> -->
+		<div class=instances>
+<!-- 			<div class=instance>
+				<img width=50 class=inst-icon src=assets/icons/grass.svg>
+				<hr>
+				<p class=inst-name>Minecraft</p>
+			</div> -->
+<!-- 			<a>
+				<div class=instance>
+					<img width=50 src=assets/icons/grass.svg>
+					<p>Minecraft</p>
+				</div>
+			</a> -->
+		</div>
+		<div class=navbar>
+			<button id=startinst onclick='startInstance()' class=instance-btn disabled >Запустіть екземпляр</button>
+			<button id=editinst disabled class=instance-btn>Редагувати екземпляр</button>
+			<button onclick='newInstance()' class='instance-btn align-right'>Новий екземпляр</button>
+		</div>
+	</body>
+</html>
